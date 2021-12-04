@@ -1,5 +1,6 @@
 package battles;
 
+import heroes.Army;
 import heroes.Warrior;
 
 public class Battle {
@@ -10,5 +11,11 @@ public class Battle {
                 w2.attack(w1);
         }
         return w1.isAlive();
+    }
+    public static boolean fight(Army attackers, Army defenders) {
+        while (attackers.isAlive() && defenders.isAlive()) {
+            fight(attackers.getUnit(), defenders.getUnit());
+        }
+        return attackers.isAlive();
     }
 }
