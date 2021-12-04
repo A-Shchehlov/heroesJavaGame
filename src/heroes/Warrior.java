@@ -7,6 +7,10 @@ public class Warrior {
                 return new Warrior();
             case "Knight":
                 return new Knight();
+            case "Defender":
+                return new Defender();
+            case "Vampire":
+                return new Vampire();
             default:
                 throw new IllegalArgumentException("Unknown class name : " + clazz);
         }
@@ -24,7 +28,7 @@ public class Warrior {
         this.attack = attack;
     }
 
-    protected int getHealth() {
+    public int getHealth() {
         return health;
     }
 
