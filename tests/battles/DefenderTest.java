@@ -30,6 +30,7 @@ class DefenderTest {
 
         assertEquals(expected, w1.isAlive());
     }
+
     @ParameterizedTest(name = "{index} {0} vs {1}, expected result = {2}")
     @CsvSource({"Warrior,Warrior,false", "Warrior,Knight,true",})
     void secondIsAlive(String firstWarrior, String secondWarrior, boolean expected) {
@@ -42,24 +43,24 @@ class DefenderTest {
     }
 
     @Test
-    void fightWarriorVsKnightVsWarrior(){
+    void fightWarriorVsKnightVsWarrior() {
         Warrior w1 = new Warrior();
         Warrior w2 = new Knight();
         Warrior w3 = new Warrior();
 
         Battle.fight(w1, w2);
-        boolean result =  Battle.fight(w2, w3);
+        boolean result = Battle.fight(w2, w3);
         assertFalse(result);
     }
 
-    class Rookie extends Warrior{
-        public Rookie(){
-            super(50,1);
+    class Rookie extends Warrior {
+        public Rookie() {
+            super(50, 1);
         }
     }
 
     @Test
-    void fightDefenderVsRookie(){
+    void fightDefenderVsRookie() {
         Warrior w1 = new Defender();
         Warrior w2 = new Rookie();
 
@@ -69,21 +70,21 @@ class DefenderTest {
     }
 
     @Test
-    void fightDefenderVsRookieVsWarrior(){
+    void fightDefenderVsRookieVsWarrior() {
         Warrior w1 = new Defender();
         Warrior w2 = new Rookie();
         Warrior w3 = new Warrior();
 
         Battle.fight(w1, w2);
-        boolean result =  Battle.fight(w1, w3);
+        boolean result = Battle.fight(w1, w3);
         assertTrue(result);
     }
 
     @ParameterizedTest(name = "#{index} {1} {0}s vs {3} {2}s, expected result = {4}")
     @CsvSource({"Warrior,1,Warrior,2,false", "Warrior,2,Warrior,3,false",
-            "Warrior,5,Warrior,7,false","Warrior,20,Warrior,21,true",
-            "Warrior,10,Warrior,11,true","Warrior,11,Warrior,7,true"})
-    void armyBattle(String classW1, int count1, String classW2, int count2, boolean expected ) {
+            "Warrior,5,Warrior,7,false", "Warrior,20,Warrior,21,true",
+            "Warrior,10,Warrior,11,true", "Warrior,11,Warrior,7,true"})
+    void armyBattle(String classW1, int count1, String classW2, int count2, boolean expected) {
         Army army1 = new Army();
         Army army2 = new Army();
 
@@ -96,14 +97,14 @@ class DefenderTest {
     }
 
     @Test
-    void warriorsAndDefendersVsWarriorsBattle(){
+    void warriorsAndDefendersVsWarriorsBattle() {
         Army army1 = new Army();
         Army army2 = new Army();
 
-        army1.addUnits(Warrior.class,5);
-        army1.addUnits(Defender.class,4);
-        army1.addUnits(Defender.class,5);
-        army2.addUnits(Warrior.class,4);
+        army1.addUnits(Warrior.class, 5);
+        army1.addUnits(Defender.class, 4);
+        army1.addUnits(Defender.class, 5);
+        army2.addUnits(Warrior.class, 4);
 
         var result = Battle.fight(army1, army2);
 
@@ -111,14 +112,14 @@ class DefenderTest {
     }
 
     @Test
-    void defendersAndWarriorsAndDefendersVsWarriorsBattle(){
+    void defendersAndWarriorsAndDefendersVsWarriorsBattle() {
         Army army1 = new Army();
         Army army2 = new Army();
 
-        army1.addUnits(Defender.class,5);
-        army1.addUnits(Warrior.class,20);
-        army2.addUnits(Warrior.class,21);
-        army1.addUnits(Defender.class,4);
+        army1.addUnits(Defender.class, 5);
+        army1.addUnits(Warrior.class, 20);
+        army2.addUnits(Warrior.class, 21);
+        army1.addUnits(Defender.class, 4);
 
         var result = Battle.fight(army1, army2);
 
@@ -126,14 +127,14 @@ class DefenderTest {
     }
 
     @Test
-    void warriorsAndDefendersAndDefendersVsWarriorsBattle(){
+    void warriorsAndDefendersAndDefendersVsWarriorsBattle() {
         Army army1 = new Army();
         Army army2 = new Army();
 
-        army1.addUnits(Warrior.class,10);
-        army1.addUnits(Defender.class,5);
-        army2.addUnits(Warrior.class,5);
-        army1.addUnits(Defender.class,10);
+        army1.addUnits(Warrior.class, 10);
+        army1.addUnits(Defender.class, 5);
+        army2.addUnits(Warrior.class, 5);
+        army1.addUnits(Defender.class, 10);
 
         var result = Battle.fight(army1, army2);
 
@@ -141,14 +142,14 @@ class DefenderTest {
     }
 
     @Test
-    void DefendersAndWarriorAndDefenderVsWarriorsBattle(){
+    void DefendersAndWarriorAndDefenderVsWarriorsBattle() {
         Army army1 = new Army();
         Army army2 = new Army();
 
-        army1.addUnits(Defender.class,2);
-        army1.addUnits(Warrior.class,1);
-        army1.addUnits(Defender.class,1);
-        army2.addUnits(Warrior.class,5);
+        army1.addUnits(Defender.class, 2);
+        army1.addUnits(Warrior.class, 1);
+        army1.addUnits(Defender.class, 1);
+        army2.addUnits(Warrior.class, 5);
 
         var result = Battle.fight(army1, army2);
 

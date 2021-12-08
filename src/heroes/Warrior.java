@@ -1,6 +1,6 @@
 package heroes;
 
-public class Warrior {
+public class Warrior implements Attackable {
     public static Warrior of(String clazz) {
         switch (clazz) {
             case "Warrior":
@@ -11,6 +11,8 @@ public class Warrior {
                 return new Defender();
             case "Vampire":
                 return new Vampire();
+            case "Lancer":
+                return new Lancer();
             default:
                 throw new IllegalArgumentException("Unknown class name : " + clazz);
         }
@@ -18,6 +20,16 @@ public class Warrior {
 
     protected int health;
     protected int attack;
+
+    public void setBehind(Warrior behind) {
+        this.behind = behind;
+    }
+
+    public Warrior getBehind() {
+        return behind;
+    }
+
+    private Warrior behind;
 
     public Warrior() {
         this(50, 5);
@@ -32,11 +44,11 @@ public class Warrior {
         return health;
     }
 
-    private void setHealth(int hp) {
+    protected void setHealth(int hp) {
         this.health = hp;
     }
 
-    protected int getAttack() {
+    public int getAttack() {
         return attack;
     }
 
@@ -44,7 +56,7 @@ public class Warrior {
         w.getDamage(this);
     }
 
-    protected int getDamage(Warrior w) {
+    protected int getDamage(Attackable w) {
         setHealth(getHealth() - w.getAttack());
         return w.getAttack();
     }

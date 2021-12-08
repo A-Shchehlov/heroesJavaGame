@@ -1,21 +1,18 @@
 package heroes;
 
 public class Defender extends Warrior {
-    private static int defense = 2;
+    private static final int DEFENSE = 2;
 
-    private void setHealth(int hp) {
-        health = hp;
-    }
     public Defender() {
         super(60, 3);
     }
 
-    protected int getDamage(Warrior w) {
+    protected int getDamage(Attackable w) {
         int attack;
-        if(w.getAttack()<defense)
+        if (w.getAttack() < DEFENSE)
             attack = 0;
         else
-            attack = w.getAttack()-defense;
+            attack = w.getAttack() - DEFENSE;
         setHealth(getHealth() - attack);
         return attack;
     }

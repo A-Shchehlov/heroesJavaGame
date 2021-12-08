@@ -7,17 +7,14 @@ public class Vampire extends Warrior {
         super(40, 4);
     }
 
-    private void setHealth(int hp){
-        health=hp;
-    }
-
     public void attack(Warrior w) {
-        int damage=w.getDamage(this);
+        int damage = w.getDamage(this);
         restoreHealth(damage);
     }
-    private void restoreHealth(int damage){
-        setHealth(getHealth()+damage*VAMPIRISM/100);
-        if(getHealth()>40)
+
+    private void restoreHealth(int damage) {
+        setHealth(getHealth() + damage * VAMPIRISM / 100);
+        if (getHealth() > 40)
             setHealth(40);
     }
 }

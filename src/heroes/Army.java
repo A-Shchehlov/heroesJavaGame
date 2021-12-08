@@ -1,20 +1,28 @@
 package heroes;
+
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 public class Army {
 
-    private Collection<Warrior> units = new ArrayList<>();
+    private List<Warrior> units = new ArrayList<>();
 
-    public Army addUnits(Class<? extends  Warrior> classWarrior, int count){
-        return addUnits(classWarrior.getSimpleName(),count);
+    public Army addUnits(Class<? extends Warrior> classWarrior, int count) {
+        return addUnits(classWarrior.getSimpleName(), count);
     }
 
     public Army addUnits(String classWarrior, int count) {
         for (int i = 0; i < count; i++) {
-            units.add(Warrior.of(classWarrior));
+            Warrior warrior = Warrior.of(classWarrior);
+            units.add(warrior);
+            if (units.size() > 1)
+                setBehindUnit(units.indexOf(warrior));
         }
         return this;
+    }
+
+    private void setBehindUnit(int index) {
+        units.get(index - 1).setBehind(units.get(index));
     }
 
     public boolean isAlive() {
