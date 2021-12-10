@@ -1,5 +1,7 @@
 package heroes;
 
+import java.util.Objects;
+
 public class Warrior implements Attackable {
     public static Warrior of(String clazz) {
         switch (clazz) {
@@ -13,12 +15,15 @@ public class Warrior implements Attackable {
                 return new Vampire();
             case "Lancer":
                 return new Lancer();
+            case "Healer":
+                return new Healer();
             default:
                 throw new IllegalArgumentException("Unknown class name : " + clazz);
         }
     }
 
     protected int health;
+    protected final int INITIAL_HEALTH;
     protected int attack;
 
     public void setBehind(Warrior behind) {
@@ -37,6 +42,7 @@ public class Warrior implements Attackable {
 
     protected Warrior(int health, int attack) {
         this.health = health;
+        this.INITIAL_HEALTH = health;
         this.attack = attack;
     }
 
@@ -54,6 +60,7 @@ public class Warrior implements Attackable {
 
     public void attack(Warrior w) {
         w.getDamage(this);
+        transmitSignal();
     }
 
     protected int getDamage(Attackable w) {
@@ -63,6 +70,16 @@ public class Warrior implements Attackable {
 
     public boolean isAlive() {
         return health > 0;
+    }
+    public void transmitSignal(){
+        if(Objects.nonNull(this.getBehind())){
+            this.getBehind().handleSignalFrom(this);
+        }
+    }
+    public void handleSignalFrom(Warrior w){
+        if(Objects.nonNull(w.getBehind())){
+            w.getBehind().transmitSignal();
+        }
     }
 }
 

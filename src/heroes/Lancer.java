@@ -15,11 +15,13 @@ public class Lancer extends Warrior {
     }
 
     private void attackNext(int damage, Warrior w) {
-        w.getBehind().getDamage(new Attackable() {
-            @Override
-            public int getAttack() {
-                return damage;
-            }
-        });
+        if(w.getBehind()!=null) {
+            w.getBehind().getDamage(new Attackable() {
+                @Override
+                public int getAttack() {
+                    return damage;
+                }
+            });
+        }
     }
 }
