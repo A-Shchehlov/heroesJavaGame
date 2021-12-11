@@ -22,9 +22,19 @@ public class Warrior implements Attackable {
         }
     }
 
-    protected int health;
+    private int health;
     protected final int INITIAL_HEALTH;
-    protected int attack;
+    private int attack;
+
+    public boolean isWasInFight() {
+        return wasInFight;
+    }
+
+    public void setWasInFight(boolean wasInFight) {
+        this.wasInFight = wasInFight;
+    }
+
+    private boolean wasInFight = false;
 
     public void setBehind(Warrior behind) {
         this.behind = behind;

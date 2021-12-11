@@ -9,10 +9,12 @@ public class Defender extends Warrior {
 
     protected int getDamage(Attackable w) {
         int attack;
-        if (w.getAttack() < DEFENSE)
+        if (w.getAttack() < DEFENSE){
             attack = 0;
-        else
+        }
+        else{
             attack = w.getAttack() - DEFENSE;
+        }
         setHealth(getHealth() - attack);
         return attack;
     }

@@ -14,8 +14,9 @@ public class Vampire extends Warrior {
 
     private void restoreHealth(int damage) {
         setHealth(getHealth() + damage * VAMPIRISM / 100);
-        if (getHealth() > 40)
+        if (getHealth() > 40) {
             setHealth(40);
+        }
     }
 }
 
