@@ -1,5 +1,7 @@
 package heroes;
 
+import weapon.Weapon;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +17,7 @@ public class Army {
         for (int i = 0; i < count; i++) {
             Warrior warrior = Warrior.of(classWarrior);
             units.add(warrior);
-            }
+        }
         setBehindUnits();
         return this;
     }
@@ -68,6 +70,15 @@ public class Army {
                 units.remove(units.get(i));
                 i--;
             }
+        }
+    }
+
+    public void equipWeaponByIndex(int index, Weapon w1) {
+        try{
+            this.units.get(index).equipWeapon(w1);
+        }
+        catch (IndexOutOfBoundsException ex){
+            System.out.println(ex.getMessage());
         }
     }
 }

@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ArmyBattleTest {
 
-
     @ParameterizedTest(name = "#{index} {1} {0}s vs {3} {2}s, expected result = {4}")
     @CsvSource({"Warrior,1,Warrior,2,false", "Warrior,2,Warrior,3,false",
             "Warrior,5,Warrior,7,false", "Warrior,20,Warrior,21,true",

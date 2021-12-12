@@ -53,12 +53,6 @@ class DefenderTest {
         assertFalse(result);
     }
 
-    class Rookie extends Warrior {
-        public Rookie() {
-            super(50, 1);
-        }
-    }
-
     @Test
     void fightDefenderVsRookie() {
         Warrior w1 = new Defender();

@@ -1,50 +1,29 @@
 package heroes;
 
+import weapon.Weapon;
+
 import java.util.Objects;
 
 public class Warrior implements Attackable {
+
     public static Warrior of(String clazz) {
-        switch (clazz) {
-            case "Warrior":
-                return new Warrior();
-            case "Knight":
-                return new Knight();
-            case "Defender":
-                return new Defender();
-            case "Vampire":
-                return new Vampire();
-            case "Lancer":
-                return new Lancer();
-            case "Healer":
-                return new Healer();
-            default:
-                throw new IllegalArgumentException("Unknown class name : " + clazz);
-        }
+        return switch (clazz) {
+            case "Warrior" -> new Warrior();
+            case "Knight" -> new Knight();
+            case "Defender" -> new Defender();
+            case "Vampire" -> new Vampire();
+            case "Lancer" -> new Lancer();
+            case "Healer" -> new Healer();
+            case "Rookie" -> new Rookie();
+            default -> throw new IllegalArgumentException("Unknown class name : " + clazz);
+        };
     }
 
     private int health;
     protected final int INITIAL_HEALTH;
     private int attack;
-
-    public boolean isWasInFight() {
-        return wasInFight;
-    }
-
-    public void setWasInFight(boolean wasInFight) {
-        this.wasInFight = wasInFight;
-    }
-
-    private boolean wasInFight = false;
-
-    public void setBehind(Warrior behind) {
-        this.behind = behind;
-    }
-
-    public Warrior getBehind() {
-        return behind;
-    }
-
     private Warrior behind;
+    private boolean wasInFight = false;
 
     public Warrior() {
         this(50, 5);
@@ -54,6 +33,22 @@ public class Warrior implements Attackable {
         this.health = health;
         this.INITIAL_HEALTH = health;
         this.attack = attack;
+    }
+
+    public boolean isWasInFight() {
+        return wasInFight;
+    }
+
+    public void setWasInFight(boolean wasInFight) {
+        this.wasInFight = wasInFight;
+    }
+
+    public void setBehind(Warrior behind) {
+        this.behind = behind;
+    }
+
+    public Warrior getBehind() {
+        return behind;
     }
 
     public int getHealth() {
@@ -81,15 +76,26 @@ public class Warrior implements Attackable {
     public boolean isAlive() {
         return health > 0;
     }
-    public void transmitSignal(){
-        if(Objects.nonNull(this.getBehind())){
+
+    public void transmitSignal() {
+        if (Objects.nonNull(this.getBehind())) {
             this.getBehind().handleSignalFrom(this);
         }
     }
-    public void handleSignalFrom(Warrior w){
-        if(Objects.nonNull(w.getBehind())){
+
+    public void handleSignalFrom(Warrior w) {
+        if (Objects.nonNull(w.getBehind())) {
             w.getBehind().transmitSignal();
         }
+    }
+
+    private void setAttack(int attack) {
+        this.attack = attack;
+    }
+
+    public void equipWeapon(Weapon weapon) {
+        this.setHealth(Math.max(this.getHealth() + weapon.getHealth(), 0));
+        this.setAttack(Math.max(this.getAttack() + weapon.getAttack(), 0));
     }
 }
 

@@ -1,5 +1,7 @@
 package heroes;
 
+import weapon.Weapon;
+
 public class Lancer extends Warrior {
 
     private static final int WEAKENING = 50;
@@ -23,5 +25,10 @@ public class Lancer extends Warrior {
                 }
             });
         }
+    }
+
+    @Override
+    public void equipWeapon(Weapon weapon) {
+        super.equipWeapon(weapon);
     }
 }
