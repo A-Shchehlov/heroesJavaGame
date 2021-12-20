@@ -1,6 +1,5 @@
 package heroes;
 
-import weapon.Weapon;
 
 import java.util.Objects;
 

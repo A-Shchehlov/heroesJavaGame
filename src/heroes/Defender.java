@@ -1,6 +1,5 @@
 package heroes;
 
-import weapon.Weapon;
 
 public class Defender extends Warrior {
     private int defense = 2;

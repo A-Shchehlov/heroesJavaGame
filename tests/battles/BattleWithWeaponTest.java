@@ -2,8 +2,6 @@ package battles;
 
 import heroes.*;
 import org.junit.jupiter.api.Test;
-import weapon.Sword;
-import weapon.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -21,7 +19,7 @@ class BattleWithWeaponTest {
                 .withVampirism(40)
                 .withHealthPower(0)
                 .build();
-        Weapon w2 = new Sword();
+        Weapon w2 = Weapon.PredefinedWeapon.SWORD;
 
         attacker.equipWeapon(w1);
         defender.equipWeapon(w2);
@@ -35,8 +33,8 @@ class BattleWithWeaponTest {
         Warrior attacker = new Defender();
         Warrior defender = new Lancer();
 
-        Weapon w1 = new Shield();
-        Weapon w2 = new Sword();
+        Weapon w1 = Weapon.PredefinedWeapon.SHIELD;
+        Weapon w2 = Weapon.PredefinedWeapon.SWORD;
 
         attacker.equipWeapon(w1);
         defender.equipWeapon(w2);
@@ -50,8 +48,8 @@ class BattleWithWeaponTest {
         Warrior attacker = new Healer();
         Warrior defender = new Knight();
 
-        Weapon w1 = new MagicWand();
-        Weapon w2 = new Katana();
+        Weapon w1 = Weapon.PredefinedWeapon.MAGIC_WAND;
+        Weapon w2 = Weapon.PredefinedWeapon.KATANA;
 
         attacker.equipWeapon(w1);
         defender.equipWeapon(w2);
@@ -65,10 +63,10 @@ class BattleWithWeaponTest {
         Warrior attacker = new Defender();
         Warrior defender = new Vampire();
 
-        Weapon w1 = new Shield();
-        Weapon w2 = new MagicWand();
-        Weapon w3 = new Shield();
-        Weapon w4 = new Katana();
+        Weapon w1 = Weapon.PredefinedWeapon.SHIELD;
+        Weapon w2 = Weapon.PredefinedWeapon.MAGIC_WAND;
+        Weapon w3 = Weapon.PredefinedWeapon.SHIELD;
+        Weapon w4 = Weapon.PredefinedWeapon.KATANA;
 
         attacker.equipWeapon(w1);
         attacker.equipWeapon(w2);
@@ -81,8 +79,8 @@ class BattleWithWeaponTest {
 
     @Test
     void armyFightWithWeapon1() {
-        Weapon w1 = new MagicWand();
-        Weapon w2 = new GreatAxe();
+        Weapon w1 = Weapon.PredefinedWeapon.MAGIC_WAND;
+        Weapon w2 = Weapon.PredefinedWeapon.GREAT_AXE;
 
         Army attackers = new Army();
         attackers.addUnits(Knight.class, 1);
@@ -102,8 +100,8 @@ class BattleWithWeaponTest {
 
     @Test
     void armyFightWithWeapon2() {
-        Weapon w1 = new Sword();
-        Weapon w2 = new GreatAxe();
+        Weapon w1 = Weapon.PredefinedWeapon.SWORD;
+        Weapon w2 = Weapon.PredefinedWeapon.GREAT_AXE;
 
         Army attackers = new Army();
         attackers.addUnits(Defender.class, 1);
@@ -123,8 +121,8 @@ class BattleWithWeaponTest {
 
     @Test
     void armyFightWithWeapon3() {
-        Weapon w1 = new Katana();
-        Weapon w2 = new Shield();
+        Weapon w1 = Weapon.PredefinedWeapon.KATANA;
+        Weapon w2 = Weapon.PredefinedWeapon.SHIELD;
 
         Army attackers = new Army();
         attackers.addUnits(Defender.class, 2);
@@ -211,8 +209,8 @@ class BattleWithWeaponTest {
 
     @Test
     void armyFightWithWeapon6() {
-        Weapon w1 = new Katana();
-        Weapon w2 = new Shield();
+        Weapon w1 = Weapon.PredefinedWeapon.KATANA;
+        Weapon w2 = Weapon.PredefinedWeapon.SHIELD;
 
         Army attackers = new Army();
         attackers.addUnits(Vampire.class, 2);
@@ -234,8 +232,8 @@ class BattleWithWeaponTest {
 
     @Test
     void armyFightWithWeapon7() {
-        Weapon w1 = new Sword();
-        Weapon w2 = new GreatAxe();
+        Weapon w1 = Weapon.PredefinedWeapon.SWORD;
+        Weapon w2 = Weapon.PredefinedWeapon.GREAT_AXE;
 
         Army attackers = new Army();
         attackers.addUnits(Vampire.class, 3);
@@ -255,8 +253,8 @@ class BattleWithWeaponTest {
 
     @Test
     void armyFightWithWeapon8() {
-        Weapon w1 = new Katana();
-        Weapon w2 = new MagicWand();
+        Weapon w1 = Weapon.PredefinedWeapon.KATANA;
+        Weapon w2 = Weapon.PredefinedWeapon.MAGIC_WAND;
 
         Army attackers = new Army();
         attackers.addUnits(Rookie.class, 3);

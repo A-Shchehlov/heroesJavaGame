@@ -1,6 +1,5 @@
 package heroes;
 
-import weapon.Weapon;
 
 public class Healer extends Warrior {
 

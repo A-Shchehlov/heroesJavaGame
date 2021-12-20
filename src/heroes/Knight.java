@@ -1,7 +1,5 @@
 package heroes;
 
-import weapon.Weapon;
-
 public class Knight extends Warrior {
 
     public Knight() {

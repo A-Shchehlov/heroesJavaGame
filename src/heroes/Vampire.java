@@ -1,7 +1,5 @@
 package heroes;
 
-import weapon.Weapon;
-
 public class Vampire extends Warrior {
 
     private int vampirism = 50;
