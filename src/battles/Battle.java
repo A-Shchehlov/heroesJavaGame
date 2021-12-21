@@ -21,6 +21,12 @@ public class Battle {
 
     public static boolean fight(Army attackers, Army defenders) {
         while (attackers.isAlive() && defenders.isAlive()) {
+            if(!attackers.isArmyWithoutWarlord()){
+                attackers.moveUnits();
+            }
+            if(!defenders.isArmyWithoutWarlord()){
+                defenders.moveUnits();
+            }
             fight(attackers.getFirstAliveUnit(), defenders.getFirstAliveUnit());
         }
         return attackers.isAlive();

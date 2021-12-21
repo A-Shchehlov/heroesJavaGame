@@ -1,6 +1,8 @@
 package heroes;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Warrior implements Attackable {
@@ -14,10 +16,12 @@ public class Warrior implements Attackable {
             case "Lancer" -> new Lancer();
             case "Healer" -> new Healer();
             case "Rookie" -> new Rookie();
+            case "Warlord" -> new Warlord();
             default -> throw new IllegalArgumentException("Unknown class name : " + clazz);
         };
     }
 
+    private List<Weapon> weaponList = new ArrayList<>();
     private int health;
     protected final int INITIAL_HEALTH;
     private int attack;
@@ -93,6 +97,7 @@ public class Warrior implements Attackable {
     }
 
     public void equipWeapon(Weapon weapon) {
+        weaponList.add(weapon);
         this.setHealth(Math.max(this.getHealth() + weapon.getHealth(), 0));
         this.setAttack(Math.max(this.getAttack() + weapon.getAttack(), 0));
     }

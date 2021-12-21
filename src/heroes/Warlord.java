@@ -1,12 +1,11 @@
 package heroes;
 
-
-public class Defender extends Warrior{
-    private int defense = 2;
-
-    public Defender() {
-        super(60, 3);
+public class Warlord extends Warrior {
+    public Warlord() {
+        super(100, 4);
     }
+
+    private int defense = 2;
 
     @Override
     protected int getDamage(Attackable w) {

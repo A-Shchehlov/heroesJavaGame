@@ -20,6 +20,7 @@ public class Vampire extends Warrior {
     public void attack(Warrior w) {
         int damage = w.getDamage(this);
         restoreHealth(damage);
+        super.transmitSignal();
     }
 
     private void restoreHealth(int damage) {
