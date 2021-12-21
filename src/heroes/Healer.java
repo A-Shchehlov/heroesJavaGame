@@ -3,7 +3,7 @@ package heroes;
 
 public class Healer extends Warrior {
 
-    public int heal = 2;
+    private int heal = 2;
 
     public Healer() {
         super(60, 0);

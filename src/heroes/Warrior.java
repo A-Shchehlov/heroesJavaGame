@@ -17,6 +17,7 @@ public class Warrior implements Attackable {
             case "Healer" -> new Healer();
             case "Rookie" -> new Rookie();
             case "Warlord" -> new Warlord();
+            case "Succubus" -> new Succubus();
             default -> throw new IllegalArgumentException("Unknown class name : " + clazz);
         };
     }

@@ -12,6 +12,7 @@ public class Lancer extends Warrior {
         int damage = w.getDamage(this);
         int damageForSecond = damage * WEAKENING / 100;
         attackNext(damageForSecond, w);
+        super.transmitSignal();
     }
 
     private void attackNext(int damage, Warrior w) {
